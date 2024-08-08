@@ -1,4 +1,5 @@
 
+import 'package:ecommerce_addidas/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 
 class CustomActionButton extends StatelessWidget {
@@ -30,7 +31,7 @@ class CustomActionButton extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-
+          AuthController().signOut();
           },
           child: const CircleAvatar(
             backgroundColor: Colors.orange,

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "90879601036",
+    "project_id": "adidas-ecommerce-45986",
+    "storage_bucket": "adidas-ecommerce-45986.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90879601036:android:18836a2d78e44072e78ea9",
+        "android_client_info": {
+          "package_name": "lk.apple"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3r_6x3K5YeD9_DmW2BbVc8GCLewddSB8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
