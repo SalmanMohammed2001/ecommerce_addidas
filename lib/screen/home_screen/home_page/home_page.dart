@@ -2,7 +2,7 @@
 import 'package:ecommerce_addidas/screen/home_screen/home_page/widget/CustomActionButton.dart';
 import 'package:ecommerce_addidas/screen/home_screen/home_page/widget/CustomSlider.dart';
 import 'package:ecommerce_addidas/screen/home_screen/home_page/widget/ProductGrid.dart';
-import 'package:ecommerce_addidas/screen/home_screen/home_page/widget/TopCategories.dart';
+
 import 'package:flutter/material.dart';
 
 

@@ -1,4 +1,4 @@
-package com.example.ecommerce_addidas
+package lk.apple
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,12 +1,10 @@
-
+import 'package:ecommerce_addidas/controller/auth_controller.dart';
 import 'package:ecommerce_addidas/screen/auth_screen/signIn_screen.dart';
 import 'package:flutter/material.dart';
-
-
+import 'package:logger/logger.dart';
 
 import '../../components/custom_button/custom_button1.dart';
 import '../../components/custom_button/google_button.dart';
-
 import '../../components/custom_text/custom_text.dart';
 import '../../components/custom_text_field/custom_text_field1.dart';
 import '../../utils/CustomNavigator.dart';
@@ -32,7 +30,7 @@ class _SignInScreenState extends State<SignUpScreen> {
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -88,11 +86,12 @@ class _SignInScreenState extends State<SignUpScreen> {
                         passwordController.text.trim().isEmpty ||
                         passwordController.text !=
                             confirmPasswordController.text) {
-                      //Logger().f("INVALIDATE DATA");
-                    }else{
-
+                      Logger().f("INVALIDATE DATA");
+                    } else {
+                      AuthController().createUser(
+                          email: emailController.text,
+                          password: passwordController.text);
                     }
-
                   },
                 ),
                 const SizedBox(

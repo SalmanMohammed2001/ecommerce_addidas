@@ -2,7 +2,6 @@
 import 'package:ecommerce_addidas/components/custom_text/custom_text.dart';
 import 'package:ecommerce_addidas/screen/auth_screen/forgot_password.dart';
 import 'package:ecommerce_addidas/screen/auth_screen/signup_screen.dart';
-import 'package:ecommerce_addidas/screen/home_screen/cart_page/cart_screen.dart';
 import 'package:ecommerce_addidas/screen/home_screen/home_page/home_page.dart';
 import 'package:flutter/material.dart';
 
