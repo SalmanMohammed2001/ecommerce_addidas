@@ -22,16 +22,22 @@ class AuthController {
       } else {
         Provider.of<AuthProviders>(context, listen: false).setUser(user);
         Logger().f('User is signed in!');
-        fetchUserData(user.uid).then((value) {
-          if(value!=null){
-            Provider.of<AuthProviders>(context,listen: false).setUserModel(value);
-            CustomNavigator.goTo(context, const MainScreen());
-          }else{
-            Provider.of<AuthProviders>(context,listen: false).setUserModel(UserModel(name: "", image: "", email: user.uid, uid: user.uid));
-            CustomNavigator.goTo(context, const HomePage());
-          }
-        },);
-
+        fetchUserData(user.uid).then(
+          (value) {
+            if (value != null) {
+              Provider.of<AuthProviders>(context, listen: false)
+                  .setUserModel(value, context, value.name);
+              CustomNavigator.goTo(context, const MainScreen());
+            } else {
+              Provider.of<AuthProviders>(context, listen: false).setUserModel(
+                  UserModel(
+                      name: "", image: "", email: user.uid, uid: user.uid),
+                  context,
+                  "");
+              CustomNavigator.goTo(context, const HomePage());
+            }
+          },
+        );
       }
     });
   }
@@ -52,7 +58,8 @@ class AuthController {
       if (credential.user != null) {
         UserModel user = UserModel(
             name: name,
-            image: "",
+            image:
+                "https://w7.pngwing.com/pngs/129/292/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon.png",
             email: email,
             uid: credential.user!.uid);
         addUserData(user);
@@ -109,14 +116,26 @@ class AuthController {
     }
   }
 
-  Future<UserModel?> fetchUserData(String uid)async{
-    try{
-      DocumentSnapshot snapshot= await users.doc(uid).get();
-      return  UserModel.fromJson(snapshot.data() as Map<String,dynamic>);
-    }catch(e){
+  Future<UserModel?> fetchUserData(String uid) async {
+    try {
+      DocumentSnapshot snapshot = await users.doc(uid).get();
+      return UserModel.fromJson(snapshot.data() as Map<String, dynamic>);
+    } catch (e) {
       Logger().e(e);
       return null;
     }
+  }
 
+  Future<void> updateUser(String uid,String name) async{
+    try {
+
+   await users.doc(uid).update({
+      "name":name
+    });
+   Logger().e("User Updated");
+    } catch (e) {
+      Logger().e(e);
+
+    }
   }
 }

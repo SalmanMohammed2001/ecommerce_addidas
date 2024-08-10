@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
-import '../../provider/main_screen.dart';
+import '../../provider/main_screen_provider.dart';
 import 'profile/profile_page.dart';
 
 class MainScreen extends StatefulWidget {
@@ -16,12 +16,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  List<Widget> screens = [
-    const HomePage(),
-    const FavouritePage(),
-    const CartPage(),
-    const ProfilePage()
-  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +40,7 @@ class _MainScreenState extends State<MainScreen> {
                     icon: Icon(Icons.shopping_cart), label: "Cart"),
                 BottomNavigationBarItem(icon: Icon(Icons.people), label: "Profile"),
               ]),
-          body: screens[value.currentIndex],
+          body: value.screen
         );
       }
     );

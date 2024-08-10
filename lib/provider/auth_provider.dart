@@ -1,7 +1,9 @@
 import 'package:ecommerce_addidas/model/user_model.dart';
+import 'package:ecommerce_addidas/provider/profile_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
 
 import '../controller/auth_controller.dart';
 
@@ -18,8 +20,9 @@ class AuthProviders extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setUserModel(UserModel model) {
+  void setUserModel(UserModel model,BuildContext context,String name) {
     _userModel = model;
+    Provider.of<ProfileProvider>(context,listen: false).setUserName(name);
     notifyListeners();
   }
 }
