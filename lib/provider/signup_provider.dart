@@ -30,7 +30,7 @@ class SignupProvider extends ChangeNotifier {
     } else {
       authController
           .createUser(
-              email: _emailController.text, password: _passwordController.text)
+              email: _emailController.text, password: _passwordController.text,name: _userNameController.text)
           .then(
         (value) {
           if (value) {

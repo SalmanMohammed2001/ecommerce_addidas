@@ -17,4 +17,13 @@ class UserModel {
         email: json["email"],
         uid: json["uid"]);
   }
+
+  Map<String,dynamic> toJson(){
+    return {
+      "name":name,
+      "email":email,
+      "image":image,
+      "uid":uid
+    };
+  }
 }
