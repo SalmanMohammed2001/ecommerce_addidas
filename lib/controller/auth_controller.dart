@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_addidas/model/user_model.dart';
 import 'package:ecommerce_addidas/provider/auth_provider.dart';
-import 'package:ecommerce_addidas/screen/home_screen/profile/main_screen.dart';
+import 'package:ecommerce_addidas/screen/home_screen/main_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:logger/logger.dart';
@@ -28,7 +28,7 @@ class AuthController {
             CustomNavigator.goTo(context, const MainScreen());
           }else{
             Provider.of<AuthProviders>(context,listen: false).setUserModel(UserModel(name: "", image: "", email: user.uid, uid: user.uid));
-            CustomNavigator.goTo(context, const HomeScreen());
+            CustomNavigator.goTo(context, const HomePage());
           }
         },);
 

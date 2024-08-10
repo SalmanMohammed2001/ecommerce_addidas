@@ -1,4 +1,5 @@
 import 'package:ecommerce_addidas/provider/auth_provider.dart';
+import 'package:ecommerce_addidas/provider/main_screen.dart';
 import 'package:ecommerce_addidas/provider/signin_provider.dart';
 import 'package:ecommerce_addidas/provider/signup_provider.dart';
 import 'package:ecommerce_addidas/screen/splach_screen/splash_screen.dart';
@@ -23,6 +24,9 @@ void main() async {
       ),
       ChangeNotifierProvider(
         create: (context) => AuthProviders(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => MainScreenProvider(),
       ),
     ],
     child: const MyApp(),

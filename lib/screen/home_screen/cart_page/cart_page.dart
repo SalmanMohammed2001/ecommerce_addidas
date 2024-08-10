@@ -7,14 +7,14 @@ import '../../../components/custom_text/custom_text.dart';
 import '../../../model/SneakerModel.dart';
 import '../../../utils/DemoData.dart';
 
-class CartScreen extends StatefulWidget {
-  const CartScreen({super.key});
+class CartPage extends StatefulWidget {
+  const CartPage({super.key});
 
   @override
-  State<CartScreen> createState() => _CartScreenState();
+  State<CartPage> createState() => _CartScreenState();
 }
 
-class _CartScreenState extends State<CartScreen> {
+class _CartScreenState extends State<CartPage> {
   List<SneakerModel> sneaker = DemoData.sneakers;
 
   @override
