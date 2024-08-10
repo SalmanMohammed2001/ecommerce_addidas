@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_addidas/model/user_model.dart';
 import 'package:ecommerce_addidas/provider/auth_provider.dart';
+import 'package:ecommerce_addidas/screen/home_screen/profile/main_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:logger/logger.dart';
@@ -21,7 +22,16 @@ class AuthController {
       } else {
         Provider.of<AuthProviders>(context, listen: false).setUser(user);
         Logger().f('User is signed in!');
-        CustomNavigator.goTo(context, const HomeScreen());
+        fetchUserData(user.uid).then((value) {
+          if(value!=null){
+            Provider.of<AuthProviders>(context,listen: false).setUserModel(value);
+            CustomNavigator.goTo(context, const MainScreen());
+          }else{
+            Provider.of<AuthProviders>(context,listen: false).setUserModel(UserModel(name: "", image: "", email: user.uid, uid: user.uid));
+            CustomNavigator.goTo(context, const HomeScreen());
+          }
+        },);
+
       }
     });
   }
@@ -97,5 +107,16 @@ class AuthController {
     } catch (e) {
       Logger().e(e);
     }
+  }
+
+  Future<UserModel?> fetchUserData(String uid)async{
+    try{
+      DocumentSnapshot snapshot= await users.doc(uid).get();
+      return  UserModel.fromJson(snapshot.data() as Map<String,dynamic>);
+    }catch(e){
+      Logger().e(e);
+      return null;
+    }
+
   }
 }

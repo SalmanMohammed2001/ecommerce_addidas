@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 10,
                 ),
                  CustomText(
-                  text: "Hello ${Provider.of<AuthProviders>(context).user!.email}",
+                  text: "Hello ${Provider.of<AuthProviders>(context).userModel!.name}",
                   fontWeight: FontWeight.w500,
                 ),
                 CustomText(
