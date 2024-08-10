@@ -1,3 +1,4 @@
+import 'package:ecommerce_addidas/controller/auth_controller.dart';
 import 'package:ecommerce_addidas/screen/home_screen/home_page/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,17 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(
       const Duration(seconds: 3),
       () {
-        FirebaseAuth.instance.authStateChanges().listen((User? user) {
-          if (user == null) {
-            Logger().e('User is currently signed out!');
-            CustomNavigator.goTo(context, const SignInScreen());
-          } else {
-            Logger().f('User is signed in!');
-            CustomNavigator.goTo(context, const HomeScreen());
-          }
-        });
-
-        // CustomNavigator.goTo(context, const SignInScreen());
+        AuthController().listenAuthState(context);
       },
     );
   }
