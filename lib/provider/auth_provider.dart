@@ -25,4 +25,9 @@ class AuthProviders extends ChangeNotifier {
     Provider.of<ProfileProvider>(context,listen: false).setUserName(name);
     notifyListeners();
   }
+
+  void updateImage(String url){
+    _userModel!.image=url;
+    notifyListeners();
+  }
 }

@@ -4,6 +4,7 @@ class UserModel {
   String email;
   String uid;
 
+
   UserModel(
       {required this.name,
       required this.image,
