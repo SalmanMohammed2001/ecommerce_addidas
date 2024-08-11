@@ -55,7 +55,7 @@ class _FavouriteState extends State<ProfilePage> {
                               child: CircleAvatar(
                                 backgroundColor: Colors.black.withOpacity(0.5),
                                 radius: 15,
-                                child: Icon(
+                                child: const Icon(
                                   Icons.edit,
                                   size: 20,
                                   color: Colors.white,

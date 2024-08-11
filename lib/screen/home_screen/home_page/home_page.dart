@@ -20,7 +20,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomePage> {
-  List<SneakerModel> sneaker = DemoData.sneakers;
+
 
 
   @override
@@ -119,7 +119,7 @@ class _HomeScreenState extends State<HomePage> {
                 const SizedBox(
                   height: 5,
                 ),
-                ProductGrid(sneaker: sneaker)
+                const ProductGrid()
               ],
             ),
           ),
