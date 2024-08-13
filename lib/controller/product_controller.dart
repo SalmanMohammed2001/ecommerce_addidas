@@ -37,11 +37,11 @@ class ProductController{
          }
        Provider.of<AuthProviders>(context,listen: false).filterFavouriteItems(sneakers);
          Provider.of<AdminProvider>(context,listen: false).setAllProduct(sneakers);
+
          return sneakers;
        }
 
     }catch(e){
-
       Logger().e(e);
       return [];
     }

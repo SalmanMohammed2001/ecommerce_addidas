@@ -1,5 +1,6 @@
 import 'package:ecommerce_addidas/provider/admin_provider.dart';
 import 'package:ecommerce_addidas/provider/auth_provider.dart';
+import 'package:ecommerce_addidas/provider/cart_provider.dart';
 import 'package:ecommerce_addidas/provider/main_screen_provider.dart';
 import 'package:ecommerce_addidas/provider/profile_provider.dart';
 import 'package:ecommerce_addidas/provider/signin_provider.dart';
@@ -35,6 +36,9 @@ void main() async {
       ),
       ChangeNotifierProvider(
         create: (context) => AdminProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => CartProvider(),
       ),
     ],
     child: const MyApp(),

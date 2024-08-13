@@ -1,5 +1,6 @@
 import 'package:ecommerce_addidas/components/custom_text/custom_text.dart';
 import 'package:ecommerce_addidas/provider/auth_provider.dart';
+import 'package:ecommerce_addidas/provider/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,5 +1,7 @@
 import 'package:ecommerce_addidas/controller/product_controller.dart';
 import 'package:ecommerce_addidas/provider/auth_provider.dart';
+import 'package:ecommerce_addidas/screen/home_screen/product_view_page/product_view.dart';
+import 'package:ecommerce_addidas/utils/CustomNavigator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
@@ -50,58 +52,63 @@ class ProductGrid extends StatelessWidget {
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisSpacing: 10, mainAxisSpacing: 10, crossAxisCount: 2),
             itemBuilder: (context, index) {
-              return Container(
-                height: 100,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: NetworkImage(sneaker[index].image),
-                      fit: BoxFit.cover),
-                  color: Colors.grey.shade300,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child:
-                    Consumer<AuthProviders>(builder: (context, value, child) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Stack(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Chip(
-                              label: Text("LKR ${sneaker[index].price}0"),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                if (value.favId.contains(sneaker[index].id)) {
-                                  value.removeFromFav(sneaker[index]);
-                                } else {
-                                  value.addToFav(sneaker[index]);
-                                }
+              return GestureDetector(
+                onTap: (){
+                  CustomNavigator.goTo(context, ProductView(sneakerModel: sneaker[index],));
+                },
+                child: Container(
+                  height: 100,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(sneaker[index].image),
+                        fit: BoxFit.cover),
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child:
+                      Consumer<AuthProviders>(builder: (context, value, child) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Stack(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Chip(
+                                label: Text("LKR ${sneaker[index].price}0"),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  if (value.favId.contains(sneaker[index].id)) {
+                                    value.removeFromFav(sneaker[index]);
+                                  } else {
+                                    value.addToFav(sneaker[index]);
+                                  }
 
-                              },
-                              child: Icon(
-                                  color: value.favId.contains(sneaker[index].id)
-                                      ? Colors.redAccent
-                                      : Colors.grey,
-                                  value.favId.contains(sneaker[index].id)
-                                      ? Icons.favorite
-                                      : Icons.favorite_outline_rounded),
-                            )
-                          ],
-                        ),
-                        Positioned(
-                            bottom: 5,
-                            child: Text(
-                              sneaker[index].title,
-                              style: const TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w500),
-                              overflow: TextOverflow.ellipsis,
-                            ))
-                      ],
-                    ),
-                  );
-                }),
+                                },
+                                child: Icon(
+                                    color: value.favId.contains(sneaker[index].id)
+                                        ? Colors.redAccent
+                                        : Colors.grey,
+                                    value.favId.contains(sneaker[index].id)
+                                        ? Icons.favorite
+                                        : Icons.favorite_outline_rounded),
+                              )
+                            ],
+                          ),
+                          Positioned(
+                              bottom: 5,
+                              child: Text(
+                                sneaker[index].title,
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.w500),
+                                overflow: TextOverflow.ellipsis,
+                              ))
+                        ],
+                      ),
+                    );
+                  }),
+                ),
               );
             },
           );
