@@ -135,4 +135,16 @@ class AuthController {
 
     }
   }
+
+  Future<void> updateFavorite(String uid,List<String> items)async{
+    try {
+      await users.doc(uid).update({
+        "favorite":items
+      });
+      Logger().e("Favorite add");
+    } catch (e) {
+      Logger().e(e);
+
+    }
+  }
 }

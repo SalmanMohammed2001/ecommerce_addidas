@@ -15,6 +15,12 @@ class AuthProviders extends ChangeNotifier {
   UserModel? _userModel;
   UserModel? get userModel =>  _userModel;
 
+  List<String> _favID=[];
+  List<String> get favId=> _favID;
+
+  AuthController authController=AuthController();
+
+
   void setUser(User user) {
     _user = user;
     notifyListeners();
@@ -30,4 +36,18 @@ class AuthProviders extends ChangeNotifier {
     _userModel!.image=url;
     notifyListeners();
   }
+
+  void addToFav(String id){
+    _favID.add(id);
+    authController.updateFavorite(user!.uid, _favID);
+    notifyListeners();
+  }
+
+
+  void removeFromFav(String id){
+    _favID.remove(id);
+    authController.updateFavorite(user!.uid, _favID);
+    notifyListeners();
+  }
+
 }
