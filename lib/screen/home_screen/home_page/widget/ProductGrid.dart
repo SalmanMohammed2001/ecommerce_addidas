@@ -68,9 +68,14 @@ class ProductGrid extends StatelessWidget {
                           Chip(
                             label: Text("LKR ${sneaker[index].price}0"),
                           ),
-                          const Icon(
-                              color: Colors.grey,
-                              Icons.favorite_outline_rounded)
+                          GestureDetector(
+                            onTap: () {
+
+                            },
+                            child: const Icon(
+                                color: Colors.grey,
+                                Icons.favorite_outline_rounded),
+                          )
                         ],
                       ),
                       Positioned(
