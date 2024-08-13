@@ -31,6 +31,11 @@ class AdminProvider extends ChangeNotifier {
   CollectionReference products =
       FirebaseFirestore.instance.collection("Products");
 
+
+  List<SneakerModel> _allItems=[];
+
+  List<SneakerModel> get allItems=>_allItems;
+
   Future<void> pickImage(BuildContext context) async {
     try {
       _imageFile = await FileImagePicker().pickImage(context);
@@ -76,5 +81,11 @@ class AdminProvider extends ChangeNotifier {
     _priceController.clear();
     _imageFile=null;
     notifyListeners();
+  }
+
+  void setAllProduct(List<SneakerModel> list){
+    _allItems= list;
+    notifyListeners();
+
   }
 }

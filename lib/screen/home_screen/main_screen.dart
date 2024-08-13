@@ -1,3 +1,6 @@
+import 'package:ecommerce_addidas/controller/product_controller.dart';
+import 'package:ecommerce_addidas/provider/admin_provider.dart';
+import 'package:ecommerce_addidas/provider/auth_provider.dart';
 import 'package:ecommerce_addidas/screen/home_screen/cart_page/cart_page.dart';
 import 'package:ecommerce_addidas/screen/home_screen/favourite/favourite_page.dart';
 import 'package:ecommerce_addidas/screen/home_screen/home_page/home_page.dart';
@@ -20,13 +23,19 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MainScreenProvider>(
-      builder: (context,value,child) {
+    return Consumer3<MainScreenProvider,AuthProviders,AdminProvider>(
+      builder: (context,value,auth,admin,child) {
         return Scaffold(
+          backgroundColor: Colors.white,
           bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: Colors.white,
             selectedItemColor: Colors.amber,
               type: BottomNavigationBarType.fixed,
               onTap: (index) {
+              if(index == 1){
+                //  auth.filterFavouriteItems(admin.allItems);
+               // ProductController().fetchProduct(context);
+              }
                 value.setCurrentIndex(index);
               },
               currentIndex: value.currentIndex,

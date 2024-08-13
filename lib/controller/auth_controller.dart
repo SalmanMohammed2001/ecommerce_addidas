@@ -31,7 +31,8 @@ class AuthController {
             } else {
               Provider.of<AuthProviders>(context, listen: false).setUserModel(
                   UserModel(
-                      name: "", image: "", email: user.uid, uid: user.uid),
+                      name: "", image: "", email: user.uid, uid: user.uid,favId: []
+                  ),
                   context,
                   "");
               CustomNavigator.goTo(context, const HomePage());
@@ -61,7 +62,7 @@ class AuthController {
             image:
                 "https://w7.pngwing.com/pngs/129/292/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon.png",
             email: email,
-            uid: credential.user!.uid);
+            uid: credential.user!.uid,favId: []);
         addUserData(user);
       }
 
@@ -147,4 +148,6 @@ class AuthController {
 
     }
   }
+
+
 }

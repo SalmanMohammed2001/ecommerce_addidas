@@ -14,7 +14,7 @@ class ProductGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: ProductController().fetchProduct(),
+        future: ProductController().fetchProduct(context),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return const Text("Has Error");
@@ -74,10 +74,11 @@ class ProductGrid extends StatelessWidget {
                             GestureDetector(
                               onTap: () {
                                 if (value.favId.contains(sneaker[index].id)) {
-                                  value.removeFromFav(sneaker[index].id);
+                                  value.removeFromFav(sneaker[index]);
                                 } else {
-                                  value.addToFav(sneaker[index].id);
+                                  value.addToFav(sneaker[index]);
                                 }
+
                               },
                               child: Icon(
                                   color: value.favId.contains(sneaker[index].id)
