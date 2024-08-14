@@ -63,7 +63,7 @@ class ProductView extends StatelessWidget {
                   ),
                   Text(
                     sneakerModel.title,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     textAlign: TextAlign.justify,
@@ -81,7 +81,7 @@ class ProductView extends StatelessWidget {
                         style: TextStyle(fontSize: 16),
                       ),
                       Container(
-                        width: 100,
+                        width: 90,
                         height: 40,
                         decoration: BoxDecoration(
                             color: Colors.amber.shade900,
@@ -94,7 +94,7 @@ class ProductView extends StatelessWidget {
                                 value.decrementQuantity();
                               },
                               child: CircleAvatar(
-                                radius: 18,
+                                radius: 15,
                                 backgroundColor: Colors.blue.withOpacity(0.3),
                                 child: const Icon(
                                   Icons.remove,
@@ -103,8 +103,8 @@ class ProductView extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              "${value.quantity}",
-                              style: TextStyle(
+                              value.getQuantity(sneakerModel),
+                              style: const TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20),
@@ -114,12 +114,12 @@ class ProductView extends StatelessWidget {
                                 value.incrementQuantity();
                               },
                               child: CircleAvatar(
-                                radius: 18,
-                                child: Icon(
+                                radius: 15,
+                                backgroundColor: Colors.blue.withOpacity(0.3),
+                                child:  const Icon(
                                   Icons.add,
                                   color: Colors.white,
                                 ),
-                                backgroundColor: Colors.blue.withOpacity(0.3),
                               ),
                             ),
                           ],
@@ -134,11 +134,20 @@ class ProductView extends StatelessWidget {
                 bottom: 5,
                 left: 1,
                 right: 1,
-                child: CustomButton1(
+                child: value.cartItem.any((element) => element.model.id ==sneakerModel.id,) ? CustomButton1(
+          size: size,
+          text: "Remove From Cart",
+          bgColor: Colors.red,
+          onTap: () {
+          value.addToCart(sneakerModel,context);
+          },
+          ): CustomButton1(
                   size: size,
                   text: "Add To Cart",
                   bgColor: Colors.amber.shade800,
-                  onTap: () {},
+                  onTap: () {
+                    value.addToCart(sneakerModel,context);
+                  },
                 ),
               )
             ],
